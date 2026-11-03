@@ -9,3 +9,6 @@ Thumbs.db
 # Секреты
 *.env
 *.key
+
+__backups/
+__test_data/
