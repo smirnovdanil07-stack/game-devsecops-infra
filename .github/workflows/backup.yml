@@ -1,0 +1,26 @@
+name: Automated Backup
+
+on:
+  schedule:
+    - cron: '0 3 * * *' # Каждый день в 3:00 UTC
+  workflow_dispatch: # Позволяет запустить вручную
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run backup script
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python scripts/backup_discord.py

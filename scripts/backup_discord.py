@@ -6,11 +6,11 @@ import sys
 
 # --- НАСТРОЙКИ ---
 # Папка, которую мы хотим забэкапить (например, сохранения игры)
-SOURCE_DIR = "test_data" 
+SOURCE_DIR = "test_data"
 # Папка, куда будем складывать архивы
 BACKUP_DIR = "backups"
-# Твой Discord Webhook URL (мы получим его на следующем шаге)
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1566969177497931936/cCQkqC1pAMS3SfxFxA11cl-GkzFlSAMfXiX5Cv7MqL4ObX8OYPpfSHqH4xyrMbbT38vL"
+# Твой Discord Webhook URL
+DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
 
 def create_backup():
     # 1. Проверяем, существует ли исходная папка
